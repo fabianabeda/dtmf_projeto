@@ -1,65 +1,41 @@
 // Navegação suave
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling para links de navegação
     const navLinks = document.querySelectorAll('.nav-link');
-    
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
             if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 70; // Altura da navbar
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+                const offsetTop = targetSection.offsetTop - 70;
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
             }
         });
     });
 
-    // Efeito de scroll na navbar
     const navbar = document.querySelector('.navbar');
     let lastScrollTop = 0;
-
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up
-            navbar.style.transform = 'translateY(0)';
-        }
-        
+        navbar.style.transform = (scrollTop > lastScrollTop && scrollTop > 100)
+            ? 'translateY(-100%)' : 'translateY(0)';
         lastScrollTop = scrollTop;
     });
 
-    // Interatividade do teclado DTMF
     const keys = document.querySelectorAll('.key');
-    
     keys.forEach(key => {
         key.addEventListener('click', function() {
-            const frequencies = this.getAttribute('data-freq').split(',');
-            const digit = this.textContent;
-            
-            // Efeito visual
+            const digit = this.textContent.trim();
+            const frequencies = dtmfFrequencies[digit];
+            tocarDTMF(digit);
             this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 150);
-            
-            // Mostrar informações da frequência
+            setTimeout(() => { this.style.transform = 'scale(1)'; }, 150);
             showFrequencyInfo(digit, frequencies);
         });
     });
 
-    // Menu mobile
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
@@ -67,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animação de entrada dos elementos
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -82,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observar elementos para animação
     const animatedElements = document.querySelectorAll('.theory-card, .metric-card, .step-content, .chart-container');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
@@ -91,9 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Contador animado para métricas
     const metricValues = document.querySelectorAll('.metric-value');
-    
     metricValues.forEach(metric => {
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
@@ -103,13 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-        
         observer.observe(metric);
     });
 });
 
 function showFrequencyInfo(digit, frequencies) {
-    // Criar tooltip com informações da frequência
     const tooltip = document.createElement('div');
     tooltip.className = 'frequency-tooltip';
     tooltip.innerHTML = `
@@ -119,8 +89,6 @@ function showFrequencyInfo(digit, frequencies) {
             <p>Frequência Alta: ${frequencies[1]} Hz</p>
         </div>
     `;
-    
-    // Estilo do tooltip
     tooltip.style.cssText = `
         position: fixed;
         top: 50%;
@@ -135,80 +103,60 @@ function showFrequencyInfo(digit, frequencies) {
         transition: opacity 0.3s ease;
         border: 2px solid #3b82f6;
     `;
-    
     document.body.appendChild(tooltip);
-    
-    // Animar entrada
-    setTimeout(() => {
-        tooltip.style.opacity = '1';
-    }, 10);
-    
-    // Remover após 3 segundos
+    setTimeout(() => { tooltip.style.opacity = '1'; }, 10);
     setTimeout(() => {
         tooltip.style.opacity = '0';
-        setTimeout(() => {
-            document.body.removeChild(tooltip);
-        }, 300);
+        setTimeout(() => { document.body.removeChild(tooltip); }, 300);
     }, 3000);
 }
 
 function animateCounter(element) {
     const target = parseInt(element.textContent);
-    const duration = 2000; // 2 segundos
-    const step = target / (duration / 16); // 60 FPS
+    const duration = 2000;
+    const step = target / (duration / 16);
     let current = 0;
-    
     const timer = setInterval(() => {
         current += step;
         if (current >= target) {
             current = target;
             clearInterval(timer);
         }
-        
-        if (element.textContent.includes('%')) {
-            element.textContent = Math.floor(current) + '%';
-        } else {
-            element.textContent = Math.floor(current);
-        }
+        element.textContent = element.textContent.includes('%') ? Math.floor(current) + '%' : Math.floor(current);
     }, 16);
 }
 
-// Adicionar estilos CSS para elementos móveis
-const mobileStyles = `
-    @media (max-width: 768px) {
-        .nav-menu {
-            position: fixed;
-            left: -100%;
-            top: 70px;
-            flex-direction: column;
-            background-color: white;
-            width: 100%;
-            text-align: center;
-            transition: 0.3s;
-            box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-            padding: 2rem 0;
-        }
-        
-        .nav-menu.active {
-            left: 0;
-        }
-        
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger.active .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-        
-        .hamburger.active .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-    }
-`;
+// Frequências DTMF
+const dtmfFrequencies = {
+    '1': [697, 1209], '2': [697, 1336], '3': [697, 1477],
+    '4': [770, 1209], '5': [770, 1336], '6': [770, 1477],
+    '7': [852, 1209], '8': [852, 1336], '9': [852, 1477],
+    '*': [941, 1209], '0': [941, 1336], '#': [941, 1477]
+};
 
-// Adicionar estilos ao documento
-const styleSheet = document.createElement('style');
-styleSheet.textContent = mobileStyles;
-document.head.appendChild(styleSheet);
+function tocarDTMF(digito) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const context = new AudioContext();
+    const [f1, f2] = dtmfFrequencies[digito];
+    const duracao = 0.3;
 
+    const osc1 = context.createOscillator();
+    osc1.type = 'sine';
+    osc1.frequency.setValueAtTime(f1, context.currentTime);
+
+    const osc2 = context.createOscillator();
+    osc2.type = 'sine';
+    osc2.frequency.setValueAtTime(f2, context.currentTime);
+
+    const gain = context.createGain();
+    gain.gain.setValueAtTime(0.2, context.currentTime);
+
+    osc1.connect(gain);
+    osc2.connect(gain);
+    gain.connect(context.destination);
+
+    osc1.start();
+    osc2.start();
+    osc1.stop(context.currentTime + duracao);
+    osc2.stop(context.currentTime + duracao);
+}
