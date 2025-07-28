@@ -8,7 +8,7 @@ def main():
     taxa = 44100
     duracao = 0.5
     digitos = ['1', '2', '3', '4', '5', '6']
-    snrs = [30, 20, 10]
+    snrs = [30, 20, 10, 5, 0, -5, -10]
 
     for dig in digitos:
         sinal = gerar_tom_dtmf(dig, duracao, taxa)
