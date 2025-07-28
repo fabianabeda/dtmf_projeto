@@ -16,12 +16,22 @@ def detectar_pico_freq(sinal, taxa_amostragem, faixa):
     indices = np.where(freq >= 0)
     freq_pos = freq[indices]
     amp = 2.0 / N * np.abs(espectro[indices])
+    
     indices_validos = np.where((freq_pos >= faixa[0]) & (freq_pos <= faixa[1]))
+    
     if len(indices_validos[0]) > 0:
         idx_pico = indices_validos[0][np.argmax(amp[indices_validos])]
+        pico_amplitude = amp[idx_pico]
+
+        # Definir um limiar de amplitude. Você precisará experimentar com este valor.
+        # Por exemplo, 0.15 ou 0.2 pode ser um bom ponto de partida.
+        limiar_amplitude = 0.15 # Este valor é um exemplo e precisa ser ajustado com testes
+
+        if pico_amplitude < limiar_amplitude:
+            return None # Sinal muito fraco ou é apenas ruído, não detecta a frequência
+
         return freq_pos[idx_pico]
     return None
-
 def detectar_digito_dtmf(sinal, taxa_amostragem, ordem_filtro=5):
     baixa = aplicar_passabaixa_butter(sinal, 1000, taxa_amostragem, ordem_filtro)
     alta = aplicar_passaalta_butter(sinal, 1100, taxa_amostragem, ordem_filtro)

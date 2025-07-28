@@ -25,14 +25,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const keys = document.querySelectorAll('.key');
     keys.forEach(key => {
         key.addEventListener('click', function() {
-            const digit = this.textContent.trim();
-            const frequencies = dtmfFrequencies[digit];
-            tocarDTMF(digit);
+            const frequencies = this.getAttribute('data-freq').split(',');
+            const digit = this.textContent;
+    
+            // Efeito visual
             this.style.transform = 'scale(0.95)';
-            setTimeout(() => { this.style.transform = 'scale(1)'; }, 150);
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+    
+            // Mostrar informações da frequência
             showFrequencyInfo(digit, frequencies);
         });
     });
+    
 
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');

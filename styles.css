@@ -15,6 +15,8 @@
     --background-white: #ffffff;
     --border-color: #e5e7eb;
     --success-color: #10b981;
+    --warning-color: #f59e0b; 
+    --danger-color: #ef4444; 
     --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -465,6 +467,22 @@ td {
     font-size: 0.875rem;
     font-weight: 500;
 }
+.status-warning {
+    background: var(--warning-color); 
+    color: white; 
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+.status-danger {
+    background: var(--danger-color); 
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
 
 /* Fórmulas matemáticas */
 .math-formula {
@@ -903,4 +921,36 @@ td {
 html {
     scroll-behavior: smooth;
 }
+/* Adições/ajustes para a galeria de dígitos */
+.dtmf-digits-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo, mínimo de 280px por coluna */
+    gap: 20px;
+    margin-top: 30px;
+}
 
+.digit-plot {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.digit-plot img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.digit-plot .chart-caption {
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-sizing: border-box;
+}

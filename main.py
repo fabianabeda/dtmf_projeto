@@ -6,7 +6,7 @@ from visualizacao import plotar_sinal_e_espectro
 
 def main():
     taxa = 44100
-    duracao = 0.5
+    duracao = 0.05
     digitos = ['1', '2', '3', '4', '5', '6']
     snrs = [30, 20, 10, 5, 0, -5, -10]
 

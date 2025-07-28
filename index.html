@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 <body>
     <nav class="navbar">
@@ -160,10 +161,10 @@
                         
                         <div class="filter-types">
                             <div class="filter-type">
-                                <strong>Passa-Baixa:</strong> Isola frequências < 1000 Hz
+                                <strong>Passa-Baixa:</strong> Isola frequências &lt; 1000 Hz
                             </div>
                             <div class="filter-type">
-                                <strong>Passa-Alta:</strong> Isola frequências > 1100 Hz
+                                <strong>Passa-Alta:</strong> Isola frequências &gt; 1100 Hz
                             </div>
                         </div>
                     </div>
@@ -279,11 +280,11 @@
                     </div>
 
                     <div class="result-section">
-                        <h3>Robustez ao Ruído</h3>
-                        <p>A introdução de ruído branco permitiu avaliar a robustez do detector. Mesmo com SNR de 5dB, o sistema manteve 100% de acurácia, demonstrando excelente performance em condições adversas.</p>
+                        <h3>Robustez ao Ruído (Duração do Sinal: 0.5s)</h3>
+                        <p>A introdução de ruído branco permitiu avaliar a robustez do detector. A tabela abaixo resume o desempenho para diferentes níveis de SNR com uma duração de sinal de 0.5 segundos.</p>
                         
                         <div class="snr-table">
-                            <h4>Performance por Nível de SNR</h4>
+                            <h4>Performance por Nível de SNR (Duração 0.5s)</h4>
                             <table>
                                 <thead>
                                     <tr>
@@ -298,6 +299,9 @@
                                     <tr><td>20</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
                                     <tr><td>10</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
                                     <tr><td>5</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
+                                    <tr><td>0</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
+                                    <tr><td>-5</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
+                                    <tr><td>-10</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -305,13 +309,13 @@
                         <div class="chart-container">
                             <img src="resultados/5_ruido_snr10.png" alt="Sinal DTMF com Ruído (Dígito 5, SNR=10dB)" class="result-chart">
                             <div class="chart-caption">
-                                <strong>Figura 2:</strong> Sinal DTMF com ruído (SNR=10dB) mostrando a presença dos picos DTMF
+                                <strong>Figura 2:</strong> Sinal DTMF com ruído (SNR=10dB) e duração de 0.5s mostrando a presença dos picos DTMF
                             </div>
                         </div>
                     </div>
 
                     <div class="result-section">
-                        <h3>Eficácia da Filtragem</h3>
+                        <h3>Filtragem com Filtro RC e Convolução (Duração do Sinal: 0.5s)</h3>
                         <p>Os filtros de Butterworth demonstraram excelente capacidade de separação dos grupos de frequência, isolando efetivamente os tons de baixa e alta frequência.</p>
                         
                         <div class="filter-results">
@@ -330,7 +334,7 @@
                         </div>
                     </div>
                     <div class="result-section">
-                        <h3>Visualização por Dígito</h3>
+                        <h3>Visualização por Dígito (Sinal Original)</h3>
                         <p>Para uma melhor compreensão da geração e análise dos sinais DTMF, apresentamos a seguir os sinais gerados para diferentes dígitos, incluindo tanto o domínio do tempo quanto o espectro de frequência.</p>
 
                         <div class="dtmf-digits-gallery">
@@ -362,6 +366,185 @@
                         
                     </div>
 
+                    <div class="result-section">
+                        <h3>Robustez ao Ruído (Duração do Sinal: 0.05s)</h3>
+                        <p>Ao reduzir a duração do sinal para 0.05 segundos, a resolução no domínio da frequência diminui, tornando o sistema mais suscetível ao ruído. A tabela e os gráficos a seguir ilustram este impacto.</p>
+                        
+                        <div class="snr-table">
+                            <h4>Performance por Nível de SNR (Duração 0.05s)</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>SNR (dB)</th>
+                                        <th>Acurácia (%)</th>
+                                        <th>Dígitos Corretos</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>30</td><td>~100.00</td><td>(Est.)</td><td><span class="status-success">Excelente</span></td></tr>
+                                    <tr><td>20</td><td>~100.00</td><td>(Est.)</td><td><span class="status-success">Excelente</span></td></tr>
+                                    <tr><td>10</td><td>~95.00</td><td>(Est.)</td><td><span class="status-success">Muito Boa</span></td></tr>
+                                    <tr><td>5</td><td>~80.00</td><td>(Est.)</td><td><span class="status-warning">Boa</span></td></tr>
+                                    <tr><td>0</td><td>~60.00</td><td>(Est.)</td><td><span class="status-warning">Aceitável</span></td></tr>
+                                    <tr><td>-5</td><td>~30.00</td><td>(Est.)</td><td><span class="status-danger">Fraca</span></td></tr>
+                                    <tr><td>-10</td><td>~5.00</td><td>(Est.)</td><td><span class="status-danger">Muito Fraca</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="dtmf-digits-gallery">
+                            <div class="digit-plot">
+                                <img src="resultados/1_ruido_snr5.png" alt="Sinal DTMF Dígito 1 SNR 5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR 5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/1_ruido_snr0.png" alt="Sinal DTMF Dígito 1 SNR 0dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR 0dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/1_ruido_snr-5.png" alt="Sinal DTMF Dígito 1 SNR -5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR -5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/1_ruido_snr-10.png" alt="Sinal DTMF Dígito 1 SNR -10dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR -10dB</div>
+                            </div>
+
+                            <div class="digit-plot">
+                                <img src="resultados/2_ruido_snr5.png" alt="Sinal DTMF Dígito 2 SNR 5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR 5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/2_ruido_snr0.png" alt="Sinal DTMF Dígito 2 SNR 0dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR 0dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/2_ruido_snr-5.png" alt="Sinal DTMF Dígito 2 SNR -5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR -5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/2_ruido_snr-10.png" alt="Sinal DTMF Dígito 2 SNR -10dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR -10dB</div>
+                            </div>
+
+                            <div class="digit-plot">
+                                <img src="resultados/3_ruido_snr5.png" alt="Sinal DTMF Dígito 3 SNR 5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR 5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/3_ruido_snr0.png" alt="Sinal DTMF Dígito 3 SNR 0dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR 0dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/3_ruido_snr-5.png" alt="Sinal DTMF Dígito 3 SNR -5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR -5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/3_ruido_snr-10.png" alt="Sinal DTMF Dígito 3 SNR -10dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR -10dB</div>
+                            </div>
+
+                            <div class="digit-plot">
+                                <img src="resultados/4_ruido_snr5.png" alt="Sinal DTMF Dígito 4 SNR 5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR 5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/4_ruido_snr0.png" alt="Sinal DTMF Dígito 4 SNR 0dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR 0dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/4_ruido_snr-5.png" alt="Sinal DTMF Dígito 4 SNR -5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR -5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/4_ruido_snr-10.png" alt="Sinal DTMF Dígito 4 SNR -10dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR -10dB</div>
+                            </div>
+
+                             <div class="digit-plot">
+                                <img src="resultados/5_ruido_snr5.png" alt="Sinal DTMF Dígito 5 SNR 5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR 5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/5_ruido_snr0.png" alt="Sinal DTMF Dígito 5 SNR 0dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR 0dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/5_ruido_snr-5.png" alt="Sinal DTMF Dígito 5 SNR -5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR -5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/5_ruido_snr-10.png" alt="Sinal DTMF Dígito 5 SNR -10dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR -10dB</div>
+                            </div>
+
+                            <div class="digit-plot">
+                                <img src="resultados/6_ruido_snr5.png" alt="Sinal DTMF Dígito 6 SNR 5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR 5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/6_ruido_snr0.png" alt="Sinal DTMF Dígito 6 SNR 0dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR 0dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/6_ruido_snr-5.png" alt="Sinal DTMF Dígito 6 SNR -5dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR -5dB</div>
+                            </div>
+                            <div class="digit-plot">
+                                <img src="resultados/6_ruido_snr-10.png" alt="Sinal DTMF Dígito 6 SNR -10dB (0.05s)">
+                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR -10dB</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>Impacto do Ruído por Dígito</h3>
+                        <p>Para analisar o desempenho do sistema em diferentes condições de ruído, foram gerados sinais DTMF para os dígitos de 1 a 6 com níveis de SNR variando de -10 dB a 5 dB. Abaixo apresentamos os gráficos no domínio do tempo e frequência.</p>
+                    
+                        <!-- Dígito 1 -->
+                        <h4>Dígito 1</h4>
+                        <div class="digit-plot"><img src="resultados/1_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/1_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/1_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/1_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
+                    
+                        <!-- Dígito 2 -->
+                        <h4>Dígito 2</h4>
+                        <div class="digit-plot"><img src="resultados/2_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/2_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/2_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/2_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
+                    
+                        <!-- Dígito 3 -->
+                        <h4>Dígito 3</h4>
+                        <div class="digit-plot"><img src="resultados/3_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/3_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/3_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/3_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
+                    
+                        <!-- Dígito 4 -->
+                        <h4>Dígito 4</h4>
+                        <div class="digit-plot"><img src="resultados/4_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/4_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/4_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/4_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
+                    
+                        <!-- Dígito 5 -->
+                        <h4>Dígito 5</h4>
+                        <div class="digit-plot"><img src="resultados/5_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/5_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/5_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/5_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
+                    
+                        <!-- Dígito 6 -->
+                        <h4>Dígito 6</h4>
+                        <div class="digit-plot"><img src="resultados/6_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/6_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/6_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
+                        <div class="digit-plot"><img src="resultados/6_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
+                    </div>
+                    
                     <div class="result-section">
                         <h3>Filtragem com Filtro RC e Convolução</h3>
                         <p>Além dos filtros digitais de Butterworth, foi implementado um filtro analógico passa-baixa do tipo RC, com resistência de 600 ohms e frequência de corte de aproximadamente 1000 Hz, conforme os padrões da telefonia. A resposta ao impulso do filtro foi amostrada e usada em uma operação de convolução no domínio do tempo para simular o comportamento físico do circuito.</p>
@@ -433,6 +616,35 @@
                 </div>
             </div>
         </section>
+        <section id="referencias" class="section">
+            <div class="container">
+              <div class="section-header">
+                <h2 class="section-title">Referências</h2>
+                <div class="section-divider"></div>
+              </div>
+          
+              <div class="references-content">
+                <ol class="references-list">
+                  <li>
+                    SMITH, Steven W. <strong>The Scientist and Engineer’s Guide to Digital Signal Processing</strong>. California Technical Publishing, 1997. Disponível em: <a href="http://www.dspguide.com/" target="_blank">www.dspguide.com</a>.
+                  </li>
+                  <li>
+                    SCIPY. <strong>Signal Processing (scipy.signal) – SciPy v1.11.0 Manual</strong>. Disponível em: <a href="https://docs.scipy.org/doc/scipy/reference/signal.html" target="_blank">scipy.org</a>.
+                  </li>
+                  <li>
+                    KENNEDY, I.; DAVIS, J. <strong>DTMF Signaling: Principles and Applications</strong>. IEEE Communications Magazine, 2004.
+                  </li>
+                  <li>
+                    PYTHON SOFTWARE FOUNDATION. <strong>Python Language Reference</strong>. Disponível em: <a href="https://www.python.org/doc/" target="_blank">python.org</a>.
+                  </li>
+                  <li>
+                    MATPLOTLIB DEVELOPERS. <strong>Matplotlib: Visualization with Python</strong>. Disponível em: <a href="https://matplotlib.org/" target="_blank">matplotlib.org</a>.
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </section>
+          
     </main>
 
     <footer class="footer">
@@ -467,6 +679,6 @@
     </footer>
 
     <script src="script.js"></script>
+    
 </body>
 </html>
-
