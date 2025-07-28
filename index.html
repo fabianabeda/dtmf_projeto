@@ -376,7 +376,7 @@ def adicionar_ruido_branco(sinal, snr_db):
                     </div>
 
                     <div class="result-section">
-                        <h3>Robustez ao Ruído (Duração do Sinal: 0.5s)</h3>
+                        <h3>Testes com Sinais Ruidosos (Duração do Sinal: 0,5s)</h3>
                         <p>A introdução de ruído branco permitiu avaliar a robustez do detector. A tabela abaixo resume o desempenho para diferentes níveis de SNR com uma duração de sinal de 0.5 segundos.</p>
                         
                         <div class="snr-table">
@@ -401,11 +401,13 @@ def adicionar_ruido_branco(sinal, snr_db):
                                 </tbody>
                             </table>
                         </div>
+                        <p>Com base nos resultados obtidos, observa-se que o sistema manteve 100% de acurácia na identificação dos tons DTMF mesmo em cenários com diferentes níveis de SNR, demonstrando elevada tolerância ao ruído. Dessa forma, o experimento atende plenamente ao <strong>Exercício 2 do projeto</strong>, que exige a análise da robustez do sistema frente à presença de ruído.</p>
+
 
                         <div class="chart-container">
                             <img src="resultados/5_ruido_snr10.png" alt="Sinal DTMF com Ruído (Dígito 5, SNR=10dB)" class="result-chart">
                             <div class="chart-caption">
-                                <strong>Figura 2:</strong> Sinal DTMF com ruído (SNR=10dB) e duração de 0.5s mostrando a presença dos picos DTMF
+                                <strong>Figura 1:</strong> Sinal DTMF com ruído (SNR=10dB) e duração de 0.5s mostrando a presença dos picos DTMF
                             </div>
                         </div>
                     </div>
@@ -418,13 +420,13 @@ def adicionar_ruido_branco(sinal, snr_db):
                             <div class="filter-result">
                                 <img src="resultados/dtmf_filtered_low_signal.png" alt="Sinal Filtrado Baixa Frequência" class="result-chart">
                                 <div class="chart-caption">
-                                    <strong>Figura 3:</strong> Isolamento da frequência de 770 Hz (grupo baixo)
+                                    <strong>Figura 2:</strong> Isolamento da frequência de 770 Hz (grupo baixo)
                                 </div>
                             </div>
                             <div class="filter-result">
                                 <img src="resultados/dtmf_filtered_high_signal.png" alt="Sinal Filtrado Alta Frequência" class="result-chart">
                                 <div class="chart-caption">
-                                    <strong>Figura 4:</strong> Isolamento da frequência de 1336 Hz (grupo alto)
+                                    <strong>Figura 3:</strong> Isolamento da frequência de 1336 Hz (grupo alto)
                                 </div>
                             </div>
                         </div>
@@ -436,27 +438,27 @@ def adicionar_ruido_branco(sinal, snr_db):
                         <div class="dtmf-digits-gallery">
                             <div class="digit-plot">
                                 <img src="resultados/1_original.png" alt="Sinal DTMF do dígito 1">
-                                <div class="chart-caption"><strong>Figura 6:</strong> Dígito 1 - Domínio do Tempo e Frequência</div>
+                                <div class="chart-caption"><strong>Figura 4:</strong> Dígito 1 - Domínio do Tempo e Frequência</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/2_original.png" alt="Sinal DTMF do dígito 2">
-                                <div class="chart-caption"><strong>Figura 7:</strong> Dígito 2 - Domínio do Tempo e Frequência</div>
+                                <div class="chart-caption"><strong>Figura 5:</strong> Dígito 2 - Domínio do Tempo e Frequência</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/3_original.png" alt="Sinal DTMF do dígito 3">
-                                <div class="chart-caption"><strong>Figura 8:</strong> Dígito 3 - Domínio do Tempo e Frequência</div>
+                                <div class="chart-caption"><strong>Figura 6:</strong> Dígito 3 - Domínio do Tempo e Frequência</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/4_original.png" alt="Sinal DTMF do dígito 4">
-                                <div class="chart-caption"><strong>Figura 9:</strong> Dígito 4 - Domínio do Tempo e Frequência</div>
+                                <div class="chart-caption"><strong>Figura 7:</strong> Dígito 4 - Domínio do Tempo e Frequência</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/5_original.png" alt="Sinal DTMF do dígito 5">
-                                <div class="chart-caption"><strong>Figura 10:</strong> Dígito 5 - Domínio do Tempo e Frequência</div>
+                                <div class="chart-caption"><strong>Figura 8:</strong> Dígito 5 - Domínio do Tempo e Frequência</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/6_original.png" alt="Sinal DTMF do dígito 6">
-                                <div class="chart-caption"><strong>Figura 11:</strong> Dígito 6 - Domínio do Tempo e Frequência</div>
+                                <div class="chart-caption"><strong>Figura 9:</strong> Dígito 6 - Domínio do Tempo e Frequência</div>
                             </div>
                         </div>
                         
@@ -492,133 +494,136 @@ def adicionar_ruido_branco(sinal, snr_db):
                         <div class="dtmf-digits-gallery">
                             <div class="digit-plot">
                                 <img src="resultados/1_ruido_snr5.png" alt="Sinal DTMF Dígito 1 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR 5dB</div>
+                                <div class="chart-caption"><strong>Figura 10:</strong> Dígito 1 - SNR 5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/1_ruido_snr0.png" alt="Sinal DTMF Dígito 1 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR 0dB</div>
+                                <div class="chart-caption"><strong>Figura 11:</strong> Dígito 1- SNR 0dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/1_ruido_snr-5.png" alt="Sinal DTMF Dígito 1 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR -5dB</div>
+                                <div class="chart-caption"><strong>Figura 12:</strong> Dígito 1 - SNR -5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/1_ruido_snr-10.png" alt="Sinal DTMF Dígito 1 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR -10dB</div>
+                                <div class="chart-caption"><strong>Figura 13:</strong> Dígito 1 - SNR -10dB</div>
                             </div>
 
                             <div class="digit-plot">
                                 <img src="resultados/2_ruido_snr5.png" alt="Sinal DTMF Dígito 2 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR 5dB</div>
+                                <div class="chart-caption"><strong>Figura 14:</strong> Dígito 2 - SNR 5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/2_ruido_snr0.png" alt="Sinal DTMF Dígito 2 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR 0dB</div>
+                                <div class="chart-caption"><strong>Figura 15:</strong> Dígito 2 - SNR 0dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/2_ruido_snr-5.png" alt="Sinal DTMF Dígito 2 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR -5dB</div>
+                                <div class="chart-caption"><strong>Figura 16:</strong> Dígito 2 - SNR -5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/2_ruido_snr-10.png" alt="Sinal DTMF Dígito 2 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR -10dB</div>
+                                <div class="chart-caption"><strong>Figura 17:</strong> Dígito 2 - SNR -10dB</div>
                             </div>
 
                             <div class="digit-plot">
                                 <img src="resultados/3_ruido_snr5.png" alt="Sinal DTMF Dígito 3 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR 5dB</div>
+                                <div class="chart-caption"><strong>Figura 18:</strong> Dígito 3 - SNR 5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/3_ruido_snr0.png" alt="Sinal DTMF Dígito 3 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR 0dB</div>
+                                <div class="chart-caption"><strong>Figura 19:</strong> Dígito 3 - SNR 0dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/3_ruido_snr-5.png" alt="Sinal DTMF Dígito 3 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR -5dB</div>
+                                <div class="chart-caption"><strong>Figura 20:</strong> Dígito 3 - SNR -5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/3_ruido_snr-10.png" alt="Sinal DTMF Dígito 3 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR -10dB</div>
+                                <div class="chart-caption"><strong>Figura 21:</strong> Dígito 3 - SNR -10dB</div>
                             </div>
 
                             <div class="digit-plot">
                                 <img src="resultados/4_ruido_snr5.png" alt="Sinal DTMF Dígito 4 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR 5dB</div>
+                                <div class="chart-caption"><strong>Figura 22:</strong> Dígito 4 - SNR 5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/4_ruido_snr0.png" alt="Sinal DTMF Dígito 4 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR 0dB</div>
+                                <div class="chart-caption"><strong>Figura 23:</strong> Dígito 4 - SNR 0dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/4_ruido_snr-5.png" alt="Sinal DTMF Dígito 4 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR -5dB</div>
+                                <div class="chart-caption"><strong>Figura 24:</strong> Dígito 4 - SNR -5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/4_ruido_snr-10.png" alt="Sinal DTMF Dígito 4 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR -10dB</div>
+                                <div class="chart-caption"><strong>Figura 25:</strong> Dígito 4 - SNR -10dB</div>
                             </div>
 
                              <div class="digit-plot">
                                 <img src="resultados/5_ruido_snr5.png" alt="Sinal DTMF Dígito 5 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR 5dB</div>
+                                <div class="chart-caption"><strong>Figura 26:</strong> Dígito 5 - SNR 5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/5_ruido_snr0.png" alt="Sinal DTMF Dígito 5 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR 0dB</div>
+                                <div class="chart-caption"><strong>Figura 27:</strong> Dígito 5 - SNR 0dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/5_ruido_snr-5.png" alt="Sinal DTMF Dígito 5 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR -5dB</div>
+                                <div class="chart-caption"><strong>Figura 28:</strong> Dígito 5 - SNR -5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/5_ruido_snr-10.png" alt="Sinal DTMF Dígito 5 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR -10dB</div>
+                                <div class="chart-caption"><strong>Figura 29:</strong> Dígito 5 - SNR -10dB</div>
                             </div>
 
                             <div class="digit-plot">
                                 <img src="resultados/6_ruido_snr5.png" alt="Sinal DTMF Dígito 6 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR 5dB</div>
+                                <div class="chart-caption"><strong>Figura 30:</strong> Dígito 6 - SNR 5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/6_ruido_snr0.png" alt="Sinal DTMF Dígito 6 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR 0dB</div>
+                                <div class="chart-caption"><strong>Figura 31:</strong> Dígito 6 - SNR 0dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/6_ruido_snr-5.png" alt="Sinal DTMF Dígito 6 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR -5dB</div>
+                                <div class="chart-caption"><strong>Figura 32:</strong> Dígito 6 - SNR -5dB</div>
                             </div>
                             <div class="digit-plot">
                                 <img src="resultados/6_ruido_snr-10.png" alt="Sinal DTMF Dígito 6 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR -10dB</div>
+                                <div class="chart-caption"><strong>Figura 33:</strong> Dígito 6 - SNR -10dB</div>
                             </div>
                         </div>
                     </div>
 
 
                     <div class="result-section">
-                        <h3>Filtragem com Filtro RC e Convolução (Duração do Sinal: 0.5s)</h3>
-                        <p>Além dos filtros digitais de Butterworth, foi implementado um filtro analógico passa-baixa do tipo RC, com resistência de 600 ohms e frequência de corte de aproximadamente 1000 Hz, conforme os padrões da telefonia. A resposta ao impulso do filtro foi amostrada e usada em uma operação de convolução no domínio do tempo para simular o comportamento físico do circuito.</p>
+                        <h3>Filtragem com Filtro RC e Convolução (Duração do Sinal: 0,5s)</h3>
+                        <p>Além dos filtros digitais de Butterworth, foi implementado um filtro analógico do tipo RC passa-baixa, com resistência de 600 ohms e frequência de corte de aproximadamente 1.000 Hz, conforme os padrões da telefonia. A resposta ao impulso desse filtro foi amostrada e utilizada em uma operação de convolução no domínio do tempo, com o objetivo de simular o comportamento físico do circuito.</p>
                         
-                        <p>A equação da resposta ao impulso utilizada foi:</p>
+                        <p>A equação da resposta ao impulso empregada foi:</p>
                         <div class="math-formula">
                             <p><strong>h(t) = (1/RC) · e<sup>-t/RC</sup> · u(t)</strong></p>
                         </div>
-        
-                        <p>Essa função foi discretizada e convoluída com o sinal DTMF, gerando um novo sinal filtrado que preserva apenas a frequência de baixa frequência (até 1 kHz). A convolução foi realizada com:</p>
+                    
+                        <p>Essa função foi discretizada e convoluída com o sinal DTMF, resultando em um novo sinal filtrado que preserva predominantemente as componentes de baixa frequência (até 1 kHz). A convolução foi realizada com o seguinte comando:</p>
                         <div class="code-snippet">
                             <code>sinal_filtrado = np.convolve(sinal, h, mode='same')</code>
                         </div>
-        
+                    
                         <div class="chart-container">
                             <img src="resultados/filtro_rc_convolucao.png" alt="Filtro RC por Convolução" class="result-chart">
                             <div class="chart-caption">
-                                <strong>Figura 5:</strong> Comparação do sinal original e do sinal filtrado com convolução por filtro RC.
+                                <strong>Figura 34:</strong> Comparação do sinal original e do sinal filtrado com convolução por filtro RC.
                             </div>
                         </div>
-        
-                        <p>O resultado mostra atenuação das componentes de alta frequência, confirmando a efetividade da filtragem analógica simulada. Esse experimento atende ao Exercício 1 proposto no projeto.</p>
-                    </div>
-        
+                    
+                        <p>O resultado obtido demonstra claramente a atenuação das componentes de alta frequência no sinal DTMF após a aplicação da convolução com a resposta ao impulso do filtro RC. Observa-se que o sinal filtrado apresenta uma forma de onda suavizada em relação ao original, preservando as frequências mais baixas e reduzindo significativamente as oscilações mais rápidas.</p>
+                    
+                        <p>Isso confirma a efetividade da filtragem analógica simulada, reproduzindo o comportamento típico de um circuito passa-baixa. Assim, o experimento simula adequadamente a ação de um circuito analógico RC, conforme os parâmetros definidos para aplicações telefônicas.</p>
+                        
+                        <p>Portanto, este experimento atende integralmente ao <strong>Exercício 1 do projeto</strong>, que requer a aplicação de convolução para simular a filtragem de sinais no contexto da discagem por tom (DTMF).</p>
+                    </div>                    
                 </div>
             </div>
         </section>
@@ -632,20 +637,20 @@ def adicionar_ruido_branco(sinal, snr_db):
                 
                 <div class="conclusion-content">
                     <div class="conclusion-text">
-                        <p>O projeto demonstrou com sucesso a implementação de um detector de tons DTMF robusto e preciso utilizando conceitos fundamentais de processamento digital de sinais. A combinação da Transformada Rápida de Fourier (FFT) para análise espectral e dos filtros de Butterworth para separação de frequências provou ser uma abordagem eficaz.</p>
+                        <p>O projeto demonstrou com êxito a implementação de um sistema de detecção de tons DTMF robusto e preciso, fundamentado em conceitos essenciais do processamento digital de sinais. A combinação da Transformada Rápida de Fourier (FFT) para análise espectral e dos filtros de Butterworth para separação das bandas de frequência revelou-se uma abordagem eficaz.</p>
                         
-                        <p>A acurácia de 100% alcançada em todos os testes, tanto com sinais puros quanto com sinais ruidosos em diferentes níveis de SNR, valida a metodologia empregada e demonstra a robustez do sistema implementado.</p>
-
+                        <p>Os testes realizados com diferentes dígitos e em variados níveis de ruído (SNR) evidenciaram uma acurácia de 100% nas condições avaliadas, validando a metodologia proposta e comprovando a resiliência do sistema implementado.</p>
+        
                         <div class="key-achievements">
                             <h3>Principais Conquistas</h3>
                             <div class="achievement-grid">
                                 <div class="achievement">
                                     <i class="fas fa-check-circle"></i>
-                                    <span>Implementação completa do detector DTMF</span>
+                                    <span>Implementação funcional do detector DTMF</span>
                                 </div>
                                 <div class="achievement">
                                     <i class="fas fa-check-circle"></i>
-                                    <span>100% de acurácia em condições ideais e ruidosas</span>
+                                    <span>Alto desempenho mesmo sob ruído</span>
                                 </div>
                                 <div class="achievement">
                                     <i class="fas fa-check-circle"></i>
@@ -653,19 +658,17 @@ def adicionar_ruido_branco(sinal, snr_db):
                                 </div>
                                 <div class="achievement">
                                     <i class="fas fa-check-circle"></i>
-                                    <span>Visualização completa dos resultados</span>
+                                    <span>Apresentação visual clara dos resultados</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="future-work">
-                            <h3>Trabalhos Futuros</h3>
-                            <p>Este projeto serve como base para futuras explorações, incluindo implementação em tempo real, otimização para dispositivos embarcados e exploração de algoritmos alternativos de detecção de frequência.</p>
-                        </div>
+                        <p>A partir desta base, novas implementações em tempo real ou otimizações para sistemas embarcados podem ser exploradas em trabalhos futuros.</p>
                     </div>
                 </div>
             </div>
         </section>
+        
+        
         <section id="referencias" class="section section-alt">
             <div class="container">
                 <div class="section-header">
@@ -737,7 +740,7 @@ def adicionar_ruido_branco(sinal, snr_db):
             <div class="footer-content">
                 <div class="footer-info">
                     <h3>Projeto DTMF</h3>
-                    <p>Desenvolvido como parte da disciplina de Sinais e Sistemas Lineares</p>
+                    <p>Desenvolvido como parte da disciplina Análise de Sinais e Sistemas Lineares</p>
                 </div>
                 <div class="footer-links">
                     <h4>Recursos</h4>

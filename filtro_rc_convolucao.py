@@ -26,6 +26,10 @@ sinal = gerar_tom_dtmf('5', 0.5, taxa_amostragem)
 # Convolução no domínio do tempo
 sinal_filtrado = np.convolve(sinal, h, mode='same')
 
+# Normaliza o sinal filtrado para ter amplitude semelhante ao original
+sinal_filtrado = sinal_filtrado / np.max(np.abs(sinal_filtrado)) * np.max(np.abs(sinal))
+
+
 # Plota resultado
 plt.figure(figsize=(12, 5))
 plt.plot(sinal[:1000], label='Sinal original')
