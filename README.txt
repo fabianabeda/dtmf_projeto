@@ -1,7 +1,7 @@
 
 # 📞 Projeto DTMF - Detecção de Tons Telefônicos
 
-Este projeto detecta dígitos DTMF (Dual-Tone Multi-Frequency) utilizando FFT, filtros Butterworth e simulação de filtro RC por convolução. Foi desenvolvido para a disciplina de Sinais e Sistemas.
+Este projeto detecta dígitos DTMF (Dual-Tone Multi-Frequency) utilizando FFT, filtros Butterworth e simulação de filtro RC por convolução. Foi desenvolvido para a disciplina Análise de Sinais e Sistemas.
 
 ## ▶️ Como executar
 
