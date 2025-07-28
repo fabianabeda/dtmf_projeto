@@ -1364,4 +1364,17 @@ html {
     background: rgba(37, 99, 235, 0.2);
     color: var(--text-primary);
 }
+pre code {
+    display: block;
+    white-space: pre-wrap;  /* Quebra linhas */
+    word-wrap: break-word;
+    background-color: #f4f4f4;
+    padding: 12px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    overflow-x: auto;
+  }
+  
 
