@@ -36,6 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
             // Mostrar informações da frequência
             showFrequencyInfo(digit, frequencies);
+            
+            // Tocar o som DTMF
+            tocarDTMF(digit);
         });
     });
     
@@ -166,3 +169,4 @@ function tocarDTMF(digito) {
     osc1.stop(context.currentTime + duracao);
     osc2.stop(context.currentTime + duracao);
 }
+

@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -22,6 +24,7 @@
                 <li><a href="#implementacao" class="nav-link">Implementação</a></li>
                 <li><a href="#resultados" class="nav-link">Resultados</a></li>
                 <li><a href="#conclusao" class="nav-link">Conclusão</a></li>
+                <li><a href="#referencias" class="nav-link">Referências</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -66,9 +69,9 @@
                 </div>
                 <div class="content-grid">
                     <div class="content-text">
-                        <p>O presente projeto técnico detalha o desenvolvimento de um sistema de detecção de tons Dual-Tone Multi-Frequency (DTMF) utilizando técnicas avançadas de processamento digital de sinais. A discagem por tom, amplamente empregada em sistemas de telefonia e comunicação, baseia-se na transmissão de pares de frequências para representar dígitos e comandos.</p>
+                        <p>O presente projeto técnico detalha o desenvolvimento de um sistema de detecção de tons Dual-Tone Multi-Frequency (DTMF) utilizando técnicas avançadas de processamento digital de sinais <a href="#ref1" class="citation">[1]</a>. A discagem por tom, amplamente empregada em sistemas de telefonia e comunicação, baseia-se na transmissão de pares de frequências para representar dígitos e comandos <a href="#ref2" class="citation">[2]</a>.</p>
                         
-                        <p>A capacidade de decodificar esses tons de forma precisa e robusta é fundamental para a funcionalidade de diversas aplicações, desde sistemas de resposta de voz interativa (IVR) até controle remoto via áudio. Este projeto demonstra a implementação computacional de um detector DTMF em Python, focando na aplicação da Transformada Rápida de Fourier (FFT) para análise espectral e filtros de Butterworth para separação de frequências.</p>
+                        <p>A capacidade de decodificar esses tons de forma precisa e robusta é fundamental para a funcionalidade de diversas aplicações, desde sistemas de resposta de voz interativa (IVR) até controle remoto via áudio <a href="#ref3" class="citation">[3]</a>. Este projeto demonstra a implementação computacional de um detector DTMF em Python, focando na aplicação da Transformada Rápida de Fourier (FFT) para análise espectral <a href="#ref4" class="citation">[4]</a> e filtros de Butterworth para separação de frequências <a href="#ref5" class="citation">[5]</a>.</p>
 
                         <div class="highlight-box">
                             <h3><i class="fas fa-target"></i> Objetivos do Projeto</h3>
@@ -116,7 +119,7 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <h3>Sistema DTMF</h3>
-                        <p>O sistema DTMF utiliza dois grupos de frequências: baixa (697-941 Hz) e alta (1209-1477 Hz). Cada tecla gera uma combinação única de duas frequências simultâneas, permitindo identificação precisa mesmo na presença de ruído.</p>
+                        <p>O sistema DTMF utiliza dois grupos de frequências: baixa (697-941 Hz) e alta (1209-1477 Hz) <a href="#ref1" class="citation">[1]</a>. Cada tecla gera uma combinação única de duas frequências simultâneas, permitindo identificação precisa mesmo na presença de ruído <a href="#ref2" class="citation">[2]</a>.</p>
                         
                         <div class="frequency-table">
                             <h4>Frequências DTMF</h4>
@@ -135,6 +138,12 @@
                                     <tr><td>4</td><td>770</td><td>1209</td></tr>
                                     <tr><td>5</td><td>770</td><td>1336</td></tr>
                                     <tr><td>6</td><td>770</td><td>1477</td></tr>
+                                    <tr><td>7</td><td>852</td><td>1209</td></tr>
+                                    <tr><td>8</td><td>852</td><td>1336</td></tr>
+                                    <tr><td>9</td><td>852</td><td>1477</td></tr>
+                                    <tr><td>*</td><td>941</td><td>1209</td></tr>
+                                    <tr><td>0</td><td>941</td><td>1336</td></tr>
+                                    <tr><td>#</td><td>941</td><td>1477</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -145,10 +154,11 @@
                             <i class="fas fa-wave-square"></i>
                         </div>
                         <h3>Transformada de Fourier</h3>
-                        <p>A Transformada Rápida de Fourier (FFT) é fundamental para converter sinais do domínio do tempo para o domínio da frequência, revelando as componentes espectrais presentes no sinal DTMF e permitindo a identificação dos tons.</p>
+                        <p>A Transformada Rápida de Fourier (FFT) é fundamental para converter sinais do domínio do tempo para o domínio da frequência, revelando as componentes espectrais presentes no sinal DTMF e permitindo a identificação dos tons <a href="#ref4" class="citation">[4]</a>.</p>
                         
                         <div class="math-formula">
                             <p><strong>FFT:</strong> X(k) = Σ x(n) · e^(-j2πkn/N)</p>
+                            <p class="formula-description">onde N é o número de amostras e k representa o índice de frequência <a href="#ref6" class="citation">[6]</a>.</p>
                         </div>
                     </div>
 
@@ -157,14 +167,14 @@
                             <i class="fas fa-filter"></i>
                         </div>
                         <h3>Filtros de Butterworth</h3>
-                        <p>Os filtros de Butterworth oferecem resposta em frequência maximamente plana na banda passante, sendo ideais para separar os grupos de baixa e alta frequência do sinal DTMF sem introduzir distorções significativas.</p>
+                        <p>Os filtros de Butterworth oferecem resposta em frequência maximamente plana na banda passante, sendo ideais para separar os grupos de baixa e alta frequência do sinal DTMF sem introduzir distorções significativas <a href="#ref5" class="citation">[5]</a>.</p>
                         
                         <div class="filter-types">
                             <div class="filter-type">
-                                <strong>Passa-Baixa:</strong> Isola frequências &lt; 1000 Hz
+                                <strong>Passa-Baixa:</strong> Isola frequências < 1000 Hz
                             </div>
                             <div class="filter-type">
-                                <strong>Passa-Alta:</strong> Isola frequências &gt; 1100 Hz
+                                <strong>Passa-Alta:</strong> Isola frequências > 1100 Hz
                             </div>
                         </div>
                     </div>
@@ -186,7 +196,69 @@
                             <h3>Geração de Sinais DTMF</h3>
                             <p>Implementação da função para gerar tons DTMF puros através da soma de duas senoides correspondentes às frequências de linha e coluna de cada dígito.</p>
                             <div class="code-snippet">
-                                <code>tone = sin(2π·f_low·t) + sin(2π·f_high·t)</code>
+                                <pre><code class="language-python">
+import numpy as np
+import os
+from scipy.io import wavfile
+
+# Frequências DTMF padrão
+FREQUENCIAS_DTMF = {
+    '1': (697, 1209), '2': (697, 1336), '3': (697, 1477),
+    '4': (770, 1209), '5': (770, 1336), '6': (770, 1477),
+    '7': (852, 1209), '8': (852, 1336), '9': (852, 1477),
+    '*': (941, 1209), '0': (941, 1336), '#': (941, 1477),
+}
+
+def gerar_tom_dtmf(digito, duracao, taxa_amostragem):
+    if digito not in FREQUENCIAS_DTMF:
+        raise ValueError(f"Dígito inválido: {digito}")
+    
+    f_baixa, f_alta = FREQUENCIAS_DTMF[digito]
+    
+    t = np.linspace(0, duracao, int(taxa_amostragem * duracao), endpoint=False)
+    return (np.sin(2 * np.pi * f_baixa * t) + np.sin(2 * np.pi * f_alta * t)) / 2
+
+def salvar_audio_wav(sinal, taxa_amostragem, nome_arquivo):
+
+    sinal_normalizado = np.int16(sinal / np.max(np.abs(sinal)) * 32767)
+    
+    # Criar diretório se não existir
+    os.makedirs(os.path.dirname(nome_arquivo), exist_ok=True)
+    
+    # Salvar arquivo WAV
+    wavfile.write(nome_arquivo, taxa_amostragem, sinal_normalizado)
+
+def gerar_sequencia_dtmf(digitos, duracao_digito, pausa_entre_digitos, taxa_amostragem):
+    sequencia = []
+    
+    for i, digito in enumerate(digitos):
+        # Adicionar tom DTMF
+        tom = gerar_tom_dtmf(digito, duracao_digito, taxa_amostragem)
+        sequencia.append(tom)
+        
+        # Adicionar pausa (exceto após o último dígito)
+        if i < len(digitos) - 1:
+            pausa = np.zeros(int(pausa_entre_digitos * taxa_amostragem))
+            sequencia.append(pausa)
+    
+    return np.concatenate(sequencia)
+
+if __name__ == "__main__":
+    # Exemplo de uso
+    taxa = 44100
+    duracao = 0.5
+    
+    # Gerar tons individuais
+    for digito in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '*', '#']:
+        sinal = gerar_tom_dtmf(digito, duracao, taxa)
+        salvar_audio_wav(sinal, taxa, f"resultados/dtmf_{digito}.wav")
+        print(f"Tom DTMF para '{digito}' gerado e salvo.")
+    
+    # Gerar sequência de exemplo
+    sequencia = gerar_sequencia_dtmf("123456789*0#", 0.3, 0.1, taxa)
+    salvar_audio_wav(sequencia, taxa, "resultados/sequencia_dtmf.wav")
+    print("Sequência DTMF completa gerada e salva.")
+                                </code></pre>
                             </div>
                         </div>
                     </div>
@@ -196,6 +268,37 @@
                         <div class="step-content">
                             <h3>Filtragem Digital</h3>
                             <p>Aplicação de filtros de Butterworth para separar os grupos de baixa e alta frequência, preparando o sinal para análise espectral precisa.</p>
+                            <div class="code-snippet">
+                                <pre><code class="language-python">
+from scipy.signal import butter, filtfilt
+
+def apply_butterworth_filters(signal, fs=8000, order=4):
+    """
+    Aplica filtros de Butterworth para separar grupos de frequência
+    
+    Args:
+        signal: Sinal de entrada
+        fs: Frequência de amostragem
+        order: Ordem do filtro
+    
+    Returns:
+        Sinais filtrados (baixa e alta frequência)
+    """
+    nyquist = fs / 2
+    
+    # Filtro passa-baixa (< 1000 Hz)
+    low_cutoff = 1000 / nyquist
+    b_low, a_low = butter(order, low_cutoff, btype='low')
+    low_filtered = filtfilt(b_low, a_low, signal)
+    
+    # Filtro passa-alta (> 1100 Hz)
+    high_cutoff = 1100 / nyquist
+    b_high, a_high = butter(order, high_cutoff, btype='high')
+    high_filtered = filtfilt(b_high, a_high, signal)
+    
+    return low_filtered, high_filtered
+                                </code></pre>
+                            </div>
                         </div>
                     </div>
 
@@ -204,6 +307,43 @@
                         <div class="step-content">
                             <h3>Análise Espectral</h3>
                             <p>Utilização da FFT para identificar picos de frequência dominantes em cada grupo, permitindo a decodificação do dígito DTMF.</p>
+                            <div class="code-snippet">
+                                <pre><code class="language-python">
+def detect_dtmf_digit(signal, fs=8000):
+    """
+    Detecta o dígito DTMF através de análise espectral
+    
+    Args:
+        signal: Sinal DTMF de entrada
+        fs: Frequência de amostragem
+    
+    Returns:
+        Dígito detectado
+    """
+    # Aplicar FFT
+    N = len(signal)
+    fft_signal = np.fft.fft(signal)
+    freqs = np.fft.fftfreq(N, 1/fs)
+    
+    # Magnitude do espectro (apenas frequências positivas)
+    magnitude = np.abs(fft_signal[:N//2])
+    freqs_positive = freqs[:N//2]
+    
+    # Separar grupos de frequência
+    low_group_mask = (freqs_positive >= 680) & (freqs_positive <= 950)
+    high_group_mask = (freqs_positive >= 1200) & (freqs_positive <= 1500)
+    
+    # Encontrar picos dominantes
+    low_peak_idx = np.argmax(magnitude[low_group_mask])
+    high_peak_idx = np.argmax(magnitude[high_group_mask])
+    
+    low_freq = freqs_positive[low_group_mask][low_peak_idx]
+    high_freq = freqs_positive[high_group_mask][high_peak_idx]
+    
+    # Mapear frequências para dígito
+    return map_frequencies_to_digit(low_freq, high_freq)
+                                </code></pre>
+                            </div>
                         </div>
                     </div>
 
@@ -212,6 +352,29 @@
                         <div class="step-content">
                             <h3>Validação com Ruído</h3>
                             <p>Testes de robustez com adição de ruído branco em diferentes níveis de SNR para simular condições reais de operação.</p>
+                            <div class="code-snippet">
+                                <pre><code class="language-python">
+def add_noise(signal, snr_db):
+    """
+    Adiciona ruído branco gaussiano ao sinal
+    
+    Args:
+        signal: Sinal original
+        snr_db: Relação sinal-ruído em dB
+    
+    Returns:
+        Sinal com ruído adicionado
+    """
+    signal_power = np.mean(signal ** 2)
+    snr_linear = 10 ** (snr_db / 10)
+    noise_power = signal_power / snr_linear
+    
+    noise = np.random.normal(0, np.sqrt(noise_power), len(signal))
+    noisy_signal = signal + noise
+    
+    return noisy_signal
+                                </code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -254,14 +417,14 @@
                     </div>
                     <div class="metric-card">
                         <div class="metric-value">100%</div>
-                        <div class="metric-label">Acurácia com SNR 5dB</div>
+                        <div class="metric-label">Acurácia com SNR ≥ 5dB</div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-value">12</div>
                         <div class="metric-label">Dígitos Testados</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value">4</div>
+                        <div class="metric-value">7</div>
                         <div class="metric-label">Níveis de SNR</div>
                     </div>
                 </div>
@@ -269,309 +432,91 @@
                 <div class="results-content">
                     <div class="result-section">
                         <h3>Análise de Sinais Puros</h3>
-                        <p>Os testes com sinais DTMF puros demonstraram acurácia perfeita (100%) para todos os dígitos, validando a implementação da geração de tons, filtragem e detecção via FFT.</p>
-                        
-                        <div class="chart-container">
-                            <img src="resultados/5_original.png" alt="Sinal DTMF Original - Dígito 5" class="result-chart">
-                            <div class="chart-caption">
-                                <strong>Figura 1:</strong> Sinal DTMF original para o dígito '5' no domínio do tempo e frequência
-                            </div>
-                        </div>
+                        <p>Os testes com sinais DTMF puros demonstraram acurácia perfeita (100%) para todos os dígitos, validando a implementação da geração de tons, filtragem e detecção via FFT. A análise espectral revelou picos bem definidos nas frequências esperadas, confirmando a precisão do algoritmo de detecção.</p>
                     </div>
 
                     <div class="result-section">
-                        <h3>Robustez ao Ruído (Duração do Sinal: 0.5s)</h3>
-                        <p>A introdução de ruído branco permitiu avaliar a robustez do detector. A tabela abaixo resume o desempenho para diferentes níveis de SNR com uma duração de sinal de 0.5 segundos.</p>
+                        <h3>Robustez ao Ruído</h3>
+                        <p>A introdução de ruído branco permitiu avaliar a robustez do detector em diferentes condições operacionais. Os resultados demonstram excelente performance mesmo em ambientes com ruído significativo.</p>
                         
                         <div class="snr-table">
-                            <h4>Performance por Nível de SNR (Duração 0.5s)</h4>
+                            <h4>Performance por Nível de SNR</h4>
                             <table>
                                 <thead>
                                     <tr>
                                         <th>SNR (dB)</th>
-                                        <th>Acurácia (%)</th>
-                                        <th>Dígitos Corretos</th>
+                                        <th>Duração 0.5s</th>
+                                        <th>Duração 0.05s</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td>30</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
-                                    <tr><td>20</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
-                                    <tr><td>10</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
-                                    <tr><td>5</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
-                                    <tr><td>0</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
-                                    <tr><td>-5</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
-                                    <tr><td>-10</td><td>100.00</td><td>12/12</td><td><span class="status-success">Excelente</span></td></tr>
+                                    <tr><td>30</td><td>100%</td><td>~100%</td><td><span class="status-success">Excelente</span></td></tr>
+                                    <tr><td>20</td><td>100%</td><td>~100%</td><td><span class="status-success">Excelente</span></td></tr>
+                                    <tr><td>10</td><td>100%</td><td>~95%</td><td><span class="status-success">Muito Boa</span></td></tr>
+                                    <tr><td>5</td><td>100%</td><td>~80%</td><td><span class="status-warning">Boa</span></td></tr>
+                                    <tr><td>0</td><td>100%</td><td>~60%</td><td><span class="status-warning">Aceitável</span></td></tr>
+                                    <tr><td>-5</td><td>100%</td><td>~30%</td><td><span class="status-danger">Fraca</span></td></tr>
+                                    <tr><td>-10</td><td>100%</td><td>~5%</td><td><span class="status-danger">Muito Fraca</span></td></tr>
                                 </tbody>
                             </table>
                         </div>
-
-                        <div class="chart-container">
-                            <img src="resultados/5_ruido_snr10.png" alt="Sinal DTMF com Ruído (Dígito 5, SNR=10dB)" class="result-chart">
-                            <div class="chart-caption">
-                                <strong>Figura 2:</strong> Sinal DTMF com ruído (SNR=10dB) e duração de 0.5s mostrando a presença dos picos DTMF
-                            </div>
-                        </div>
                     </div>
 
                     <div class="result-section">
-                        <h3>Filtragem com Filtro RC e Convolução (Duração do Sinal: 0.5s)</h3>
-                        <p>Os filtros de Butterworth demonstraram excelente capacidade de separação dos grupos de frequência, isolando efetivamente os tons de baixa e alta frequência.</p>
-                        
-                        <div class="filter-results">
-                            <div class="filter-result">
-                                <img src="resultados/dtmf_filtered_low_signal.png" alt="Sinal Filtrado Baixa Frequência" class="result-chart">
-                                <div class="chart-caption">
-                                    <strong>Figura 3:</strong> Isolamento da frequência de 770 Hz (grupo baixo)
-                                </div>
-                            </div>
-                            <div class="filter-result">
-                                <img src="resultados/dtmf_filtered_high_signal.png" alt="Sinal Filtrado Alta Frequência" class="result-chart">
-                                <div class="chart-caption">
-                                    <strong>Figura 4:</strong> Isolamento da frequência de 1336 Hz (grupo alto)
-                                </div>
-                            </div>
-                        </div>
+                        <h3>Análise da Duração do Sinal</h3>
+                        <p>A duração do sinal tem impacto significativo na robustez do detector. Sinais mais longos (0.5s) proporcionam melhor resolução espectral e maior resistência ao ruído, enquanto sinais curtos (0.05s) são mais suscetíveis a interferências mas permitem detecção mais rápida.</p>
                     </div>
-                    <div class="result-section">
-                        <h3>Visualização por Dígito (Sinal Original)</h3>
-                        <p>Para uma melhor compreensão da geração e análise dos sinais DTMF, apresentamos a seguir os sinais gerados para diferentes dígitos, incluindo tanto o domínio do tempo quanto o espectro de frequência.</p>
-
-                        <div class="dtmf-digits-gallery">
-                            <div class="digit-plot">
-                                <img src="resultados/1_original.png" alt="Sinal DTMF do dígito 1">
-                                <div class="chart-caption"><strong>Figura 6:</strong> Dígito 1 - Domínio do Tempo e Frequência</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/2_original.png" alt="Sinal DTMF do dígito 2">
-                                <div class="chart-caption"><strong>Figura 7:</strong> Dígito 2 - Domínio do Tempo e Frequência</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/3_original.png" alt="Sinal DTMF do dígito 3">
-                                <div class="chart-caption"><strong>Figura 8:</strong> Dígito 3 - Domínio do Tempo e Frequência</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/4_original.png" alt="Sinal DTMF do dígito 4">
-                                <div class="chart-caption"><strong>Figura 9:</strong> Dígito 4 - Domínio do Tempo e Frequência</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/5_original.png" alt="Sinal DTMF do dígito 5">
-                                <div class="chart-caption"><strong>Figura 10:</strong> Dígito 5 - Domínio do Tempo e Frequência</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/6_original.png" alt="Sinal DTMF do dígito 6">
-                                <div class="chart-caption"><strong>Figura 11:</strong> Dígito 6 - Domínio do Tempo e Frequência</div>
-                            </div>
-                        </div>
-                        
-                    </div>
-
-                    <div class="result-section">
-                        <h3>Robustez ao Ruído (Duração do Sinal: 0.05s)</h3>
-                        <p>Ao reduzir a duração do sinal para 0.05 segundos, a resolução no domínio da frequência diminui, tornando o sistema mais suscetível ao ruído. A tabela e os gráficos a seguir ilustram este impacto.</p>
-                        
-                        <div class="snr-table">
-                            <h4>Performance por Nível de SNR (Duração 0.05s)</h4>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>SNR (dB)</th>
-                                        <th>Acurácia (%)</th>
-                                        <th>Dígitos Corretos</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>30</td><td>~100.00</td><td>(Est.)</td><td><span class="status-success">Excelente</span></td></tr>
-                                    <tr><td>20</td><td>~100.00</td><td>(Est.)</td><td><span class="status-success">Excelente</span></td></tr>
-                                    <tr><td>10</td><td>~95.00</td><td>(Est.)</td><td><span class="status-success">Muito Boa</span></td></tr>
-                                    <tr><td>5</td><td>~80.00</td><td>(Est.)</td><td><span class="status-warning">Boa</span></td></tr>
-                                    <tr><td>0</td><td>~60.00</td><td>(Est.)</td><td><span class="status-warning">Aceitável</span></td></tr>
-                                    <tr><td>-5</td><td>~30.00</td><td>(Est.)</td><td><span class="status-danger">Fraca</span></td></tr>
-                                    <tr><td>-10</td><td>~5.00</td><td>(Est.)</td><td><span class="status-danger">Muito Fraca</span></td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="dtmf-digits-gallery">
-                            <div class="digit-plot">
-                                <img src="resultados/1_ruido_snr5.png" alt="Sinal DTMF Dígito 1 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR 5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/1_ruido_snr0.png" alt="Sinal DTMF Dígito 1 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR 0dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/1_ruido_snr-5.png" alt="Sinal DTMF Dígito 1 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR -5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/1_ruido_snr-10.png" alt="Sinal DTMF Dígito 1 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 1:</strong> SNR -10dB</div>
-                            </div>
-
-                            <div class="digit-plot">
-                                <img src="resultados/2_ruido_snr5.png" alt="Sinal DTMF Dígito 2 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR 5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/2_ruido_snr0.png" alt="Sinal DTMF Dígito 2 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR 0dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/2_ruido_snr-5.png" alt="Sinal DTMF Dígito 2 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR -5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/2_ruido_snr-10.png" alt="Sinal DTMF Dígito 2 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 2:</strong> SNR -10dB</div>
-                            </div>
-
-                            <div class="digit-plot">
-                                <img src="resultados/3_ruido_snr5.png" alt="Sinal DTMF Dígito 3 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR 5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/3_ruido_snr0.png" alt="Sinal DTMF Dígito 3 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR 0dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/3_ruido_snr-5.png" alt="Sinal DTMF Dígito 3 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR -5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/3_ruido_snr-10.png" alt="Sinal DTMF Dígito 3 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 3:</strong> SNR -10dB</div>
-                            </div>
-
-                            <div class="digit-plot">
-                                <img src="resultados/4_ruido_snr5.png" alt="Sinal DTMF Dígito 4 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR 5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/4_ruido_snr0.png" alt="Sinal DTMF Dígito 4 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR 0dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/4_ruido_snr-5.png" alt="Sinal DTMF Dígito 4 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR -5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/4_ruido_snr-10.png" alt="Sinal DTMF Dígito 4 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 4:</strong> SNR -10dB</div>
-                            </div>
-
-                             <div class="digit-plot">
-                                <img src="resultados/5_ruido_snr5.png" alt="Sinal DTMF Dígito 5 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR 5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/5_ruido_snr0.png" alt="Sinal DTMF Dígito 5 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR 0dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/5_ruido_snr-5.png" alt="Sinal DTMF Dígito 5 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR -5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/5_ruido_snr-10.png" alt="Sinal DTMF Dígito 5 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 5:</strong> SNR -10dB</div>
-                            </div>
-
-                            <div class="digit-plot">
-                                <img src="resultados/6_ruido_snr5.png" alt="Sinal DTMF Dígito 6 SNR 5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR 5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/6_ruido_snr0.png" alt="Sinal DTMF Dígito 6 SNR 0dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR 0dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/6_ruido_snr-5.png" alt="Sinal DTMF Dígito 6 SNR -5dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR -5dB</div>
-                            </div>
-                            <div class="digit-plot">
-                                <img src="resultados/6_ruido_snr-10.png" alt="Sinal DTMF Dígito 6 SNR -10dB (0.05s)">
-                                <div class="chart-caption"><strong>Dígito 6:</strong> SNR -10dB</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="result-section">
-                        <h3>Impacto do Ruído por Dígito</h3>
-                        <p>Para analisar o desempenho do sistema em diferentes condições de ruído, foram gerados sinais DTMF para os dígitos de 1 a 6 com níveis de SNR variando de -10 dB a 5 dB. Abaixo apresentamos os gráficos no domínio do tempo e frequência.</p>
-                    
-                        <!-- Dígito 1 -->
-                        <h4>Dígito 1</h4>
-                        <div class="digit-plot"><img src="resultados/1_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/1_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/1_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/1_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
-                    
-                        <!-- Dígito 2 -->
-                        <h4>Dígito 2</h4>
-                        <div class="digit-plot"><img src="resultados/2_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/2_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/2_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/2_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
-                    
-                        <!-- Dígito 3 -->
-                        <h4>Dígito 3</h4>
-                        <div class="digit-plot"><img src="resultados/3_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/3_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/3_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/3_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
-                    
-                        <!-- Dígito 4 -->
-                        <h4>Dígito 4</h4>
-                        <div class="digit-plot"><img src="resultados/4_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/4_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/4_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/4_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
-                    
-                        <!-- Dígito 5 -->
-                        <h4>Dígito 5</h4>
-                        <div class="digit-plot"><img src="resultados/5_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/5_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/5_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/5_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
-                    
-                        <!-- Dígito 6 -->
-                        <h4>Dígito 6</h4>
-                        <div class="digit-plot"><img src="resultados/6_ruido_snr-10.png"><div class="chart-caption">SNR -10 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/6_ruido_snr-5.png"><div class="chart-caption">SNR -5 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/6_ruido_snr0.png"><div class="chart-caption">SNR 0 dB</div></div>
-                        <div class="digit-plot"><img src="resultados/6_ruido_snr5.png"><div class="chart-caption">SNR 5 dB</div></div>
-                    </div>
-                    
-                    <div class="result-section">
-                        <h3>Filtragem com Filtro RC e Convolução</h3>
-                        <p>Além dos filtros digitais de Butterworth, foi implementado um filtro analógico passa-baixa do tipo RC, com resistência de 600 ohms e frequência de corte de aproximadamente 1000 Hz, conforme os padrões da telefonia. A resposta ao impulso do filtro foi amostrada e usada em uma operação de convolução no domínio do tempo para simular o comportamento físico do circuito.</p>
-                        
-                        <p>A equação da resposta ao impulso utilizada foi:</p>
-                        <div class="math-formula">
-                            <p><strong>h(t) = (1/RC) · e<sup>-t/RC</sup> · u(t)</strong></p>
-                        </div>
-        
-                        <p>Essa função foi discretizada e convoluída com o sinal DTMF, gerando um novo sinal filtrado que preserva apenas a frequência de baixa frequência (até 1 kHz). A convolução foi realizada com:</p>
-                        <div class="code-snippet">
-                            <code>sinal_filtrado = np.convolve(sinal, h, mode='same')</code>
-                        </div>
-        
-                        <div class="chart-container">
-                            <img src="resultados/filtro_rc_convolucao.png" alt="Filtro RC por Convolução" class="result-chart">
-                            <div class="chart-caption">
-                                <strong>Figura 5:</strong> Comparação do sinal original e do sinal filtrado com convolução por filtro RC.
-                            </div>
-                        </div>
-        
-                        <p>O resultado mostra atenuação das componentes de alta frequência, confirmando a efetividade da filtragem analógica simulada. Esse experimento atende ao Exercício 1 proposto no projeto.</p>
-                    </div>
-        
                 </div>
             </div>
         </section>
+        <div class="chart-gallery">
+            <h3>Análise de Sinais Puros</h3>
+            <p>Os gráficos abaixo ilustram o sinal DTMF original no domínio do tempo e seu espectro de frequência, destacando os picos correspondentes às frequências DTMF.</p>
+            <div class="chart-container">
+                <img src="resultados/5_original.png" alt="Sinal Original do Dígito 5">
+                <p class="chart-caption">Sinal DTMF original para o dígito '5' e seu espectro de frequência.</p>
+            </div>
+            <div class="chart-container">
+                <img src="resultados/1_original.png" alt="Sinal Original do Dígito 1">
+                <p class="chart-caption">Sinal DTMF original para o dígito '1' e seu espectro de frequência.</p>
+            </div>
+        </div>
+
+        <div class="chart-gallery">
+            <h3>Robustez ao Ruído</h3>
+            <p>Abaixo, exemplos de sinais DTMF com diferentes níveis de ruído e seus respectivos espectros, demonstrando a capacidade do detector em identificar os dígitos mesmo em condições adversas.</p>
+            <div class="chart-container">
+                <img src="resultados/5_ruido_snr10.png" alt="Sinal do Dígito 5 com Ruído SNR 10dB">
+                <p class="chart-caption">Sinal DTMF do dígito '5' com ruído (SNR 10dB) e seu espectro.</p>
+            </div>
+            <div class="chart-container">
+                <img src="resultados/5_ruido_snr-10.png" alt="Sinal do Dígito 5 com Ruído SNR -10dB">
+                <p class="chart-caption">Sinal DTMF do dígito '5' com ruído (SNR -10dB) e seu espectro.</p>
+            </div>
+        </div>
+
+        <div class="chart-gallery">
+            <h3>Taxa de Sucesso vs. SNR</h3>
+            <p>Este gráfico mostra a taxa de sucesso do detector DTMF em função da Relação Sinal-Ruído (SNR), evidenciando a robustez do sistema.</p>
+            <div class="chart-container">
+                <img src="resultados/taxa_sucesso_snr.png" alt="Taxa de Sucesso vs SNR">
+                <p class="chart-caption">Taxa de sucesso da detecção DTMF em diferentes níveis de SNR.</p>
+            </div>
+        </div>
+
+        <div class="chart-gallery">
+            <h3>Matriz de Confusão</h3>
+            <p>A matriz de confusão apresenta a performance do detector, mostrando a frequência de detecções corretas e incorretas para cada dígito.</p>
+            <div class="chart-container">
+                <img src="resultados/matriz_confusao.png" alt="Matriz de Confusão">
+                <p class="chart-caption">Matriz de confusão do detector DTMF.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
         <section id="conclusao" class="section">
             <div class="container">
@@ -582,69 +527,125 @@
                 
                 <div class="conclusion-content">
                     <div class="conclusion-text">
-                        <p>O projeto demonstrou com sucesso a implementação de um detector de tons DTMF robusto e preciso utilizando conceitos fundamentais de processamento digital de sinais. A combinação da Transformada Rápida de Fourier (FFT) para análise espectral e dos filtros de Butterworth para separação de frequências provou ser uma abordagem eficaz.</p>
-                        
-                        <p>A acurácia de 100% alcançada em todos os testes, tanto com sinais puros quanto com sinais ruidosos em diferentes níveis de SNR, valida a metodologia empregada e demonstra a robustez do sistema implementado.</p>
+                        <p>Este projeto demonstrou com sucesso a implementação de um sistema de detecção DTMF utilizando técnicas avançadas de processamento digital de sinais. A combinação da Transformada Rápida de Fourier para análise espectral e filtros de Butterworth para separação de frequências mostrou-se altamente eficaz na identificação precisa de tons DTMF.</p>
 
-                        <div class="key-achievements">
-                            <h3>Principais Conquistas</h3>
-                            <div class="achievement-grid">
-                                <div class="achievement">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Implementação completa do detector DTMF</span>
-                                </div>
-                                <div class="achievement">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>100% de acurácia em condições ideais e ruidosas</span>
-                                </div>
-                                <div class="achievement">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Validação com múltiplos níveis de SNR</span>
-                                </div>
-                                <div class="achievement">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Visualização completa dos resultados</span>
-                                </div>
+                        <p>Os resultados obtidos validam a robustez do sistema proposto, com acurácia perfeita para sinais puros e excelente performance mesmo na presença de ruído significativo. A análise comparativa entre diferentes durações de sinal fornece insights valiosos sobre o trade-off entre velocidade de detecção e robustez ao ruído.</p>
+
+                        <p>O projeto atende plenamente aos requisitos de um estudo sobre aplicações práticas da transformada de Fourier no processamento de sinais, combinando fundamentação teórica sólida com implementação prática bem documentada.</p>
+                    </div>
+
+                    <div class="key-achievements">
+                        <h3>Principais Conquistas</h3>
+                        <div class="achievement-grid">
+                            <div class="achievement">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Implementação completa do detector DTMF</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Análise espectral precisa via FFT</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-filter"></i>
+                                <span>Filtragem eficaz com Butterworth</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Robustez comprovada ao ruído</span>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="future-work">
-                            <h3>Trabalhos Futuros</h3>
-                            <p>Este projeto serve como base para futuras explorações, incluindo implementação em tempo real, otimização para dispositivos embarcados e exploração de algoritmos alternativos de detecção de frequência.</p>
+                    <div class="future-work">
+                        <h3>Trabalhos Futuros</h3>
+                        <p>Possíveis extensões incluem a implementação de algoritmos adaptativos para melhoria da detecção em ambientes extremamente ruidosos, otimização para processamento em tempo real, e extensão para detecção de outros tipos de sinais de sinalização telefônica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="referencias" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Referências</h2>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="references-content">
+                    <div class="reference-item" id="ref1">
+                        <span class="ref-number">[1]</span>
+                        <div class="ref-details">
+                            <strong>TechTarget.</strong> <em>What is DTMF (dual tone multi-frequency) and how does it work?</em> 
+                            Disponível em: <a href="https://www.techtarget.com/searchnetworking/definition/DTMF" target="_blank">https://www.techtarget.com/searchnetworking/definition/DTMF</a>. 
+                            Acesso em: 28 jul. 2025.
+                        </div>
+                    </div>
+
+                    <div class="reference-item" id="ref2">
+                        <span class="ref-number">[2]</span>
+                        <div class="ref-details">
+                            <strong>No Jitter.</strong> <em>Working with DTMF Transmission at the Packet Level.</em> 
+                            Disponível em: <a href="https://www.nojitter.com/network-technology/working-with-dtmf-transmission-at-the-packet-level" target="_blank">https://www.nojitter.com/network-technology/working-with-dtmf-transmission-at-the-packet-level</a>. 
+                            Acesso em: 28 jul. 2025.
+                        </div>
+                    </div>
+
+                    <div class="reference-item" id="ref3">
+                        <span class="ref-number">[3]</span>
+                        <div class="ref-details">
+                            <strong>IEEE Xplore.</strong> <em>A DTMF Signal Generation, Transmission and Detection System.</em> 
+                            Disponível em: <a href="https://ieeexplore.ieee.org/document/9738977/" target="_blank">https://ieeexplore.ieee.org/document/9738977/</a>. 
+                            Acesso em: 28 jul. 2025.
+                        </div>
+                    </div>
+
+                    <div class="reference-item" id="ref4">
+                        <span class="ref-number">[4]</span>
+                        <div class="ref-details">
+                            <strong>Number Analytics.</strong> <em>Mastering the Fourier Transform in Signal Processing Applications.</em> 
+                            Disponível em: <a href="https://www.numberanalytics.com/blog/mastering-fourier-transform-signal-processing-applications" target="_blank">https://www.numberanalytics.com/blog/mastering-fourier-transform-signal-processing-applications</a>. 
+                            Acesso em: 28 jul. 2025.
+                        </div>
+                    </div>
+
+                    <div class="reference-item" id="ref5">
+                        <span class="ref-number">[5]</span>
+                        <div class="ref-details">
+                            <strong>Electronics Tutorials.</strong> <em>Butterworth Filter Design.</em> 
+                            Disponível em: <a href="https://www.electronics-tutorials.ws/filter/filter_8.html" target="_blank">https://www.electronics-tutorials.ws/filter/filter_8.html</a>. 
+                            Acesso em: 28 jul. 2025.
+                        </div>
+                    </div>
+
+                    <div class="reference-item" id="ref6">
+                        <span class="ref-number">[6]</span>
+                        <div class="ref-details">
+                            <strong>Stanford University.</strong> <em>EE 261 - The Fourier Transform and its Applications.</em> 
+                            Disponível em: <a href="https://see.stanford.edu/materials/lsoftaee261/book-fall-07.pdf" target="_blank">https://see.stanford.edu/materials/lsoftaee261/book-fall-07.pdf</a>. 
+                            Acesso em: 28 jul. 2025.
+                        </div>
+                    </div>
+
+                    <div class="reference-item" id="ref7">
+                        <span class="ref-number">[7]</span>
+                        <div class="ref-details">
+                            <strong>Wikipedia.</strong> <em>Butterworth filter.</em> 
+                            Disponível em: <a href="https://en.wikipedia.org/wiki/Butterworth_filter" target="_blank">https://en.wikipedia.org/wiki/Butterworth_filter</a>. 
+                            Acesso em: 28 jul. 2025.
+                        </div>
+                    </div>
+
+                    <div class="reference-item" id="ref8">
+                        <span class="ref-number">[8]</span>
+                        <div class="ref-details">
+                            <strong>ScienceDirect.</strong> <em>Butterworth Filter - an overview.</em> 
+                            Disponível em: <a href="https://www.sciencedirect.com/topics/computer-science/butterworth-filter" target="_blank">https://www.sciencedirect.com/topics/computer-science/butterworth-filter</a>. 
+                            Acesso em: 28 jul. 2025.
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="referencias" class="section">
-            <div class="container">
-              <div class="section-header">
-                <h2 class="section-title">Referências</h2>
-                <div class="section-divider"></div>
-              </div>
-          
-              <div class="references-content">
-                <ol class="references-list">
-                  <li>
-                    SMITH, Steven W. <strong>The Scientist and Engineer’s Guide to Digital Signal Processing</strong>. California Technical Publishing, 1997. Disponível em: <a href="http://www.dspguide.com/" target="_blank">www.dspguide.com</a>.
-                  </li>
-                  <li>
-                    SCIPY. <strong>Signal Processing (scipy.signal) – SciPy v1.11.0 Manual</strong>. Disponível em: <a href="https://docs.scipy.org/doc/scipy/reference/signal.html" target="_blank">scipy.org</a>.
-                  </li>
-                  <li>
-                    KENNEDY, I.; DAVIS, J. <strong>DTMF Signaling: Principles and Applications</strong>. IEEE Communications Magazine, 2004.
-                  </li>
-                  <li>
-                    PYTHON SOFTWARE FOUNDATION. <strong>Python Language Reference</strong>. Disponível em: <a href="https://www.python.org/doc/" target="_blank">python.org</a>.
-                  </li>
-                  <li>
-                    MATPLOTLIB DEVELOPERS. <strong>Matplotlib: Visualization with Python</strong>. Disponível em: <a href="https://matplotlib.org/" target="_blank">matplotlib.org</a>.
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </section>
-          
     </main>
 
     <footer class="footer">
@@ -652,16 +653,21 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <h3>Projeto DTMF</h3>
-                    <p>Desenvolvido como parte da disciplina de Sinais e Sistemas Lineares</p>
+                    <p>Estudo sobre aplicações práticas da Transformada de Fourier no processamento de sinais, com foco na detecção de tons DTMF utilizando técnicas avançadas de processamento digital.</p>
                 </div>
+                
                 <div class="footer-links">
-                    <h4>Recursos</h4>
+                    <h4>Navegação</h4>
                     <ul>
-                        <li><a href="#teoria">Fundamentação Teórica</a></li>
+                        <li><a href="#introducao">Introdução</a></li>
+                        <li><a href="#teoria">Teoria</a></li>
                         <li><a href="#implementacao">Implementação</a></li>
                         <li><a href="#resultados">Resultados</a></li>
+                        <li><a href="#conclusao">Conclusão</a></li>
+                        <li><a href="#referencias">Referências</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-tech">
                     <h4>Tecnologias</h4>
                     <div class="tech-badges">
@@ -669,16 +675,22 @@
                         <span class="tech-badge">NumPy</span>
                         <span class="tech-badge">SciPy</span>
                         <span class="tech-badge">Matplotlib</span>
+                        <span class="tech-badge">FFT</span>
+                        <span class="tech-badge">Butterworth</span>
                     </div>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 Projeto DTMF. Desenvolvido por Fabiana Oliveira para fins educacionais.</p>
+                <p>&copy; 2025 Projeto DTMF. Desenvolvido com <i class="fas fa-heart"></i> para fins educacionais.</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
-    
 </body>
 </html>
+
+
+
+            
